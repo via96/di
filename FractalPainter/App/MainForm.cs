@@ -13,10 +13,9 @@ namespace FractalPainting.App
     public class MainForm : Form
     {
 
-        public MainForm(IUiAction[] actions, Palette palette, PictureBoxImageHolder pictureBox,
-            IImageDirectoryProvider imageDirectoryProvider)
+        public MainForm(IUiAction[] actions, PictureBoxImageHolder pictureBox,
+            ImageSettings imageSettings)
         {
-            var imageSettings = CreateSettingsManager().Load().ImageSettings;
             ClientSize = new Size(imageSettings.Width, imageSettings.Height);
 
             var mainMenu = new MenuStrip();
@@ -26,9 +25,6 @@ namespace FractalPainting.App
             pictureBox.RecreateImage(imageSettings);
             pictureBox.Dock = DockStyle.Fill;
             Controls.Add(pictureBox);
-
-            DependencyInjector.Inject<IImageHolder>(actions, pictureBox);
-            DependencyInjector.Inject(actions, palette);
         }
 
         private static SettingsManager CreateSettingsManager()

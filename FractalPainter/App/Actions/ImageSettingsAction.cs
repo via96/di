@@ -9,11 +9,13 @@ namespace FractalPainting.App.Actions
         private IImageHolder imageHolder;
 
         private ImageSettings imageSettings;
+        private SettingsManager settingsManager;
 
-        public ImageSettingsAction(IImageHolder imageHolder, ImageSettings imageSettings)
+        public ImageSettingsAction(IImageHolder imageHolder, SettingsManager settingsManager, ImageSettings imageSettings)
         {
             this.imageHolder = imageHolder;
             this.imageSettings = imageSettings;
+            this.settingsManager = settingsManager;
         }
 
         public string Category => "Настройки";
@@ -22,8 +24,11 @@ namespace FractalPainting.App.Actions
 
         public void Perform()
         {
+            var settings = settingsManager.Load();
             SettingsForm.For(imageSettings).ShowDialog();
             imageHolder.RecreateImage(imageSettings);
+            settings.ImageSettings = imageSettings;
+            settingsManager.Save(settings);
         }
     }
 }
