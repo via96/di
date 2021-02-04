@@ -21,7 +21,7 @@ namespace FractalPainting.App.Actions
             this.settingsFactoryFunc = settingsFactoryFunc;
         }
 
-        public string Category => "Фракталы";
+        public UiActionGroup Category => UiActionGroup.Fractals;
         public string Name => "Дракон";
         public string Description => "Дракон Хартера-Хейтуэя";
 

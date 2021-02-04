@@ -18,7 +18,7 @@ namespace FractalPainting.App.Actions
             this.settingsManager = settingsManager;
         }
 
-        public string Category => "Настройки";
+        public UiActionGroup Category => UiActionGroup.Settings;
         public string Name => "Изображение...";
         public string Description => "Размеры изображения";
 

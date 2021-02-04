@@ -17,7 +17,7 @@ namespace FractalPainting.App.Actions
             this.imageHolder = imageHolder;
         }
 
-        public string Category => "Файл";
+        public UiActionGroup Category => UiActionGroup.File;
         public string Name => "Сохранить...";
         public string Description => "Сохранить изображение в файл";
 

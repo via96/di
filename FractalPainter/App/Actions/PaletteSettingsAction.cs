@@ -13,7 +13,7 @@ namespace FractalPainting.App.Actions
             this.palette = palette;
         }
 
-        public string Category => "Настройки";
+        public UiActionGroup Category => UiActionGroup.Settings;
         public string Name => "Палитра...";
         public string Description => "Цвета для рисования фракталов";
 
